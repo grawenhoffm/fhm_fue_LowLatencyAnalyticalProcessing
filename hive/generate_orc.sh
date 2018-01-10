@@ -4,13 +4,13 @@ SCALE=50
 FORMAT="ORC"
 BUCKETS=1 #13
 RETURN_BUCKETS=1 #13
-SCRIPS = "bin_partitioned"
+SCRIPS="bin_partitioned"
 
 if [$1 = "orc"]; then
- SCRIPTS = "bin_partitioned"
+ SCRIPTS="bin_partitioned"
 fi
 if [$1 = "zlib"]; then
- SCRIPTS = "bin_partitioned_zlib"
+ SCRIPTS="bin_partitioned_zlib"
 fi
 
 # Tables in the TPC-DS schema.
@@ -32,7 +32,7 @@ echo -e "all: ${DIMS} ${FACTS}" >> $LOAD_FILE
 # Populate the smaller tables.
 for t in ${DIMS}
 do
-	COMMAND="hive -i settings/load-partitioned.sql -f bin/${SCRIPTS}/${t}.sql \
+	COMMAND="hive -i settings/load-partitioned.sql -f bin/$SCRIPTS/${t}.sql \
 	    -d DB=${TARGET_DB} -d SOURCE=${SOURCE_DB}  \
             -d SCALE=${SCALE} \
 	    -d REDUCERS=${REDUCERS} \
@@ -44,7 +44,7 @@ done
 
 for t in ${FACTS}
 do
-	COMMAND="hive -i settings/load-partitioned.sql -f bin/${SCRIPTS}/${t}.sql \
+	COMMAND="hive -i settings/load-partitioned.sql -f bin/$SCRIPTS/${t}.sql \
 	    -d DB=${TARGET_DB} \
             -d SCALE=${SCALE} \
 	    -d SOURCE=${SOURCE_DB} -d BUCKETS=${BUCKETS} \

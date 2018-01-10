@@ -8,7 +8,8 @@ load data into hive with the following command
 2. Format Data
 load data into hive with the following command (orc or orc_zlib formatted)
 ```
-./generate_orc.sh orc
+./generate_orc.sh
+hive -f bin/analyze.sql
 ```
 
 3. Run Benchmark (IP, Port, DB-Name, Start-Point)
