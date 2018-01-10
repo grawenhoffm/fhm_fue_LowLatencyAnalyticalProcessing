@@ -1,7 +1,7 @@
 # Hive LLAP Benchmark
 
 1. Load Data
-load data into hive with the following command
+load data into hive
 ```
 ./generate_hive_tables.sh
 ```
