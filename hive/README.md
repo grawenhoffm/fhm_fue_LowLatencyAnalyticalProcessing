@@ -1,18 +1,22 @@
 # Hive LLAP Benchmark
 
 1. Load Data
-load data into hive with the following command
+
+    load data into hive tables
 ```
 ./generate_hive_tables.sh
 ```
 2. Format Data
-load data into hive with the following command (orc or orc_zlib formatted)
+
+    load data into hive with the following command (orc or orc_zlib formatted)
 ```
 ./generate_orc.sh
 hive -f bin/analyze.sql
 ```
 
-3. Run Benchmark (IP, Port, DB-Name, Start-Point)
+3. Run Benchmark 
+
+    use benchmark tool(IP, Port, DB-Name, Start-Point)
 ```
 java -jar HiveConnector-1.0.jar wi-cluster01 10000  orc_50 100 &
 ```
