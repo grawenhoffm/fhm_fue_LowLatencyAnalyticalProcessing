@@ -1,0 +1,17 @@
+{"query":"
+  SELECT \"ss_store_s_store_name\",
+  \"ss_store_s_store_id\",
+  SUM(CASE WHEN (\"ss_sold_date_d_day_name\"='Sunday') THEN \"ss_ss_sales_price\" ELSE null END) AS sun_sales,
+  SUM(CASE WHEN (\"ss_sold_date_d_day_name\"='Monday') THEN \"ss_ss_sales_price\" ELSE null END) AS mon_sales,
+  SUM(CASE WHEN (\"ss_sold_date_d_day_name\"='Tuesday') THEN \"ss_ss_sales_price\" ELSE  null END) AS tue_sales,
+  SUM(CASE WHEN (\"ss_sold_date_d_day_name\"='Wednesday') THEN \"ss_ss_sales_price\" ELSE null END) AS wed_sales,
+  SUM(CASE WHEN (\"ss_sold_date_d_day_name\"='Thursday') THEN \"ss_ss_sales_price\" ELSE null END) AS thu_sales,
+  SUM(CASE WHEN (\"ss_sold_date_d_day_name\"='Friday') THEN \"ss_ss_sales_price\" ELSE null END) AS fri_sales,
+  SUM(CASE WHEN (\"ss_sold_date_d_day_name\"='Saturday') THEN \"ss_ss_sales_price\" ELSE null END) AS sat_sales
+ FROM store_sales
+ WHERE \"ss_store_s_gmt_offset\" = -6 AND
+  \"ss_sold_date_d_year\" = 1998
+ GROUP BY \"ss_store_s_store_name\", \"ss_store_s_store_id\"
+ ORDER BY \"ss_store_s_store_name\", \"ss_store_s_store_id\", sun_sales, mon_sales, tue_sales, wed_sales, thu_sales, fri_sales, sat_sales
+ LIMIT 100
+"}

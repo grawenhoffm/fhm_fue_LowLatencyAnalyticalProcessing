@@ -1,0 +1,17 @@
+{"query":"
+ EXPLAIN PLAN FOR
+ SELECT \"ss_item_i_item_id\",
+        AVG(\"ss_ss_quantity\") AS agg1,
+        AVG(\"ss_ss_list_price\") AS agg2,
+        AVG(\"ss_ss_coupon_amt\") AS agg3,
+        AVG(\"ss_ss_sales_price_sum\") AS agg4
+ FROM \"store_sales\"
+ WHERE \"ss_cdemo_cd_gender\" = 'F' AND
+       \"ss_cdemo_cd_marital_status\" = 'W' AND
+       \"ss_cdemo_cd_education_status\" = 'Primary' AND
+       (\"ss_promo_p_channel_email\" = 'N' OR \"ss_promo_p_channel_event\" = 'N') AND
+       \"ss_sold_date_d_year\" = 1998
+ GROUP BY \"ss_item_i_item_id\"
+ ORDER BY \"ss_item_i_item_id\"
+ LIMIT 100
+"}

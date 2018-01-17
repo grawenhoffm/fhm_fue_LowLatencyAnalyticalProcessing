@@ -1,0 +1,18 @@
+{"query":"
+select \"ss_sold_date_d_year\",
+  \"ss_item_i_category_id\",
+  \"ss_item_i_category\",
+  SUM(\"ss_ss_ext_sales_price\") AS sp
+ FROM store_sales
+ WHERE \"ss_item_i_manager_id\" = 1
+ AND \"ss_sold_date_d_moy\"=12
+ AND \"ss_sold_date_d_year\"=1998
+ GROUP BY \"ss_sold_date_d_year\",
+   \"ss_item_i_category_id\",
+   \"ss_item_i_category\"
+ ORDER BY sp DESC,
+    \"ss_sold_date_d_year\",
+    \"ss_item_i_category_id\",
+    \"ss_item_i_category\"
+LIMIT 100
+"}

@@ -1,0 +1,39 @@
+{"query":"
+SELECT SUM(\"ss_ss_quantity\")
+  FROM store_sales
+  WHERE \"ss_sold_date_d_year\" = 1998
+  AND (
+    (\"ss_cdemo_cd_demo_sk\" = \"ss_ss_cdemo_sk\"
+    AND \"ss_cdemo_cd_marital_status\" = 'M'
+    AND \"ss_cdemo_cd_education_status\" = '4 yr Degree'
+    AND \"ss_ss_sales_price\" between 100.00 AND 150.00 )
+   OR (
+    \"ss_cdemo_cd_demo_sk\" = \"ss_ss_cdemo_sk\"
+    AND \"ss_cdemo_cd_marital_status\" = 'M'
+    AND \"ss_cdemo_cd_education_status\" = '4 yr Degree'
+    AND \"ss_ss_sales_price\" between 50.00 AND 100.00 )
+   OR (
+    \"ss_cdemo_cd_demo_sk\" = store_sales.\"ss_ss_cdemo_sk\"
+    AND \"ss_cdemo_cd_marital_status\" = 'M'
+    AND \"ss_cdemo_cd_education_status\" = '4 yr Degree'
+    AND \"ss_ss_sales_price\" between 150.00 AND 200.00 )
+ )
+ AND (
+    (\"ss_ss_addr_sk\" = \"ss_addr_ca_address_sk\"
+    AND \"ss_addr_ca_country\" = 'United States'
+    AND \"ss_addr_ca_state\" in ('KY', 'GA', 'NM')
+    AND \"ss_ss_net_profit\" between 0 AND 2000
+    )
+  OR (
+    \"ss_ss_addr_sk\" = \"ss_addr_ca_address_sk\"
+    AND \"ss_addr_ca_country\" = 'United States'
+    AND \"ss_addr_ca_state\" in ('MT', 'OR', 'IN')
+    AND \"ss_ss_net_profit\" between 150 AND 3000)
+  OR (
+    \"ss_ss_addr_sk\" = \"ss_addr_ca_address_sk\"
+    AND \"ss_addr_ca_country\" = 'United States'
+    AND \"ss_addr_ca_state\" in ('WI', 'MO', 'WV')
+    AND \"ss_ss_net_profit\" between 50 AND 25000
+    )
+ )
+"}

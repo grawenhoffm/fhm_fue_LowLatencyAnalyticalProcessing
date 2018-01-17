@@ -1,0 +1,18 @@
+{"query":"
+  SELECT \"ss_item_i_item_id\",
+  \"ss_store_s_state\",
+  AVG(\"ss_ss_quantity\") AS agg1,
+  AVG(\"ss_ss_list_price\") AS agg2,
+  AVG(\"ss_ss_coupon_amt\") AS agg3,
+  AVG(\"ss_ss_sales_price_sum\") AS agg4
+ FROM store_sales
+ WHERE \"ss_cdemo_cd_gender\" = 'M' AND
+      \"ss_cdemo_cd_marital_status\" = 'U' AND
+      \"ss_cdemo_cd_education_status\" = '2 yr Degree' AND
+      \"ss_sold_date_d_year\" = 2001 AND
+      \"ss_store_s_state\" IN ('SD','FL', 'MI', 'LA', 'MO', 'SC', 'TN')
+ GROUP BY \"ss_item_i_item_id\", \"ss_store_s_state\"
+ ORDER BY \"ss_item_i_item_id\",
+      \"ss_store_s_state\"
+LIMIT 100
+"}

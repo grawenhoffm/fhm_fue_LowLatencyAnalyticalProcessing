@@ -1,0 +1,11 @@
+{"query":"SELECT \"ss_item_i_brand_id\" AS brand_id,
+  \"ss_item_i_brand\" AS brand,
+  SUM(\"ss_ss_ext_sales_price\") AS ext_price
+  FROM \"store_sales\"
+  WHERE \"ss_item_i_manager_id\"=36
+  AND \"ss_sold_date_d_moy\"=12
+  AND \"ss_sold_date_d_year\"=2001
+  GROUP BY \"ss_item_i_brand\", \"ss_item_i_brand_id\"
+  ORDER BY ext_price desc, \"ss_item_i_brand_id\"
+  LIMIT 100
+"}

@@ -1,0 +1,35 @@
+{"query":"
+SELECT AVG(\"ss_ss_quantity\")
+       ,AVG(\"ss_ss_ext_sales_price\")
+       ,AVG(\"ss_ss_ext_wholesale_cost\")
+       ,SUM(\"ss_ss_ext_wholesale_cost\")
+ FROM store_sales
+ WHERE \"ss_sold_date_d_year\" = 2001
+ AND((\"ss_cdemo_cd_marital_status\" = 'M'
+  AND \"ss_cdemo_cd_education_status\" = '4 yr Degree'
+  AND \"ss_ss_sales_price\" BETWEEN 100.00 AND 150.00
+  AND \"ss_hdemo_hd_dep_count\" = 3
+     )OR
+     (\"ss_cdemo_cd_marital_status\" = 'D'
+  AND \"ss_cdemo_cd_education_status\" = 'Primary'
+  AND \"ss_ss_sales_price\" BETWEEN 50.00 AND 100.00
+  AND \"ss_hdemo_hd_dep_count\" = 1
+     ) OR
+     (\"ss_cdemo_cd_marital_status\" = 'U'
+  AND \"ss_cdemo_cd_education_status\" = 'Advanced Degree'
+  AND \"ss_ss_sales_price\" BETWEEN 150.00 AND 200.00
+  AND \"ss_hdemo_hd_dep_count\" = 1
+     ))
+ AND((\"ss_addr_ca_country\" = 'United States'
+  AND \"ss_addr_ca_state\" in ('KY', 'GA', 'NM')
+  AND \"ss_ss_net_profit\" BETWEEN 100 AND 200
+     ) OR
+     (\"ss_addr_ca_country\" = 'United States'
+  AND \"ss_addr_ca_state\" in ('MT', 'OR', 'IN')
+  AND \"ss_ss_net_profit\" BETWEEN 150 AND 300
+     ) OR
+     (\"ss_addr_ca_country\" = 'United States'
+  AND \"ss_addr_ca_state\" in ('WI', 'MO', 'WV')
+  AND \"ss_ss_net_profit\" BETWEEN 50 AND 250
+     ))
+"}
