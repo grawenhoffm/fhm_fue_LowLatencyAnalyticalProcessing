@@ -2,7 +2,7 @@ select avg(ss_ss_quantity)
        ,avg(ss_ss_ext_sales_price)
        ,avg(ss_ss_ext_wholesale_cost)
        ,sum(ss_ss_ext_wholesale_cost)
- from bigTable
+ from default.bigTable
  where ss_sold_date_d_year = 2001
  and((ss_cdemo_cd_marital_status = 'D'
   and ss_cdemo_cd_education_status = '2 yr Degree'

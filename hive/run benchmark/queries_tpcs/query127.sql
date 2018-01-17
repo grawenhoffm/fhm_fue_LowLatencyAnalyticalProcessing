@@ -7,7 +7,7 @@ select ss_item_i_item_id
       ,sum(ss_ss_ext_sales_price) as itemrevenue
       ,sum(ss_ss_ext_sales_price)*100 as revenueratio
 from
-	bigTable
+	default.bigTable
 where
 	ss_item_i_category in ('Jewelry', 'Sports', 'Books')
   	and ss_sold_date_d_date between cast('2001-01-12' as date)

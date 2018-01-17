@@ -3,7 +3,7 @@
          avg(ss_ss_list_price) agg2,
          avg(ss_ss_coupon_amt) agg3,
          avg(ss_ss_sales_price) agg4
-  from BigTable
+  from default.BigTable
   where
         ss_cdemo_cd_gender = 'F' and
         ss_cdemo_cd_marital_status = 'W' and

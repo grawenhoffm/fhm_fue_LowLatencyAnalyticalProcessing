@@ -1,0 +1,181 @@
+<configuration>
+<!--General Configuration-->
+  <property>
+       <name>hive.execution.engine</name>
+       <value>tez</value>
+  </property>
+
+
+   <property>
+     <name>hive.tez.java.ops</name>
+     <value>-server -Djava.net.preferIPv4Stack=true -XX:NewRatio=8 -XX:+UseNUMA XX+UseG1GC -XX:+UseParallelGC</value>
+   </property>
+
+    <property>
+     <name>hive.tez.container.size</name>
+     <value>10240</value>
+    </property>
+
+<!--TPC DS Config-->
+  <property>
+       <name>hive.strict.checks.cartesian.product</name>
+       <value>false</value>
+  </property>
+
+  <!--LLAP Configuration-->
+    <property>
+         <name>hive.execution.mode</name>
+         <value>llap</value>
+    </property>
+
+    <property>
+         <name>hive.llap.execution.mode</name>
+         <value>all</value>
+    </property>
+
+    <property>
+      <name>hive.llap.daemon.service.hosts</name>
+      <value>@llaptest</value>
+    </property>
+
+    <property>
+      <name>mapred.reduce.tasks</name>
+      <value>-1</value>
+      <description>Test</description>
+   </property>
+
+<!--LLAP Standard Config-->
+  <property>
+      <name>hive.auto.convert.join</name>
+      <value>true</value>
+      <description>Whether Hive enables the optimization about converting common join into mapjoin based on the input file size</description>
+  </property>
+
+  <property>
+       <name>hive.optimize.sort.dynamic.partition</name>
+       <value>true</value>
+       <description>https://community.hortonworks.com/articles/89522/hive-insert-to-dynamic-partition-query-generating.html</description>
+  </property>
+
+  <property>
+   <name>hive.auto.convert.join.noconditionaltask</name>
+   <value>true</value>
+  </property>
+
+  <property>
+   <name>hive.auto.convert.join.noconditionaltask.size</name>
+   <value>3072</value>
+  </property>
+<!---->
+  <property>
+    <name>hive.zookeeper.quorum</name>
+    <value>node1:2181</value>
+  </property>
+
+  <property>
+    <name>javax.jdo.option.ConnectionURL</name>
+    <value>jdbc:mysql://localhost/metastore?createDatabaseIfNotExist=true</value>
+  </property>
+
+  <property>
+    <name>javax.jdo.option.ConnectionDriverName</name>
+    <value>com.mysql.jdbc.Driver</value>
+  </property>
+
+  <property>
+    <name>javax.jdo.option.ConnectionUserName</name>
+    <value>root</value>
+  </property>
+
+  <property>
+    <name>javax.jdo.option.ConnectionPassword</name>
+    <value>root</value>
+  </property>
+
+  <property>
+    <name>datanucleus.autoCreateSchema</name>
+    <value>true</value>
+  </property>
+
+  <property>
+    <name>datanucleus.fixedDatastore</name>
+    <value>true</value>
+  </property>
+
+  <property>
+   <name>datanucleus.autoCreateTables</name>
+   <value>True</value>
+  </property>
+
+  <property>
+    <name>hive.server2.authentication</name>
+    <value>NONE</value>
+  </property>
+
+  <property>
+    <name>hive.server2.enable.doAs</name>
+    <value>false</value>
+  </property>
+
+
+<!--Hive LLAP Performance Boosting-->
+  <!--Hive CBO-->
+  <property>
+   <name>hive.cbo.enable</name>
+   <value>true</value>
+  </property>
+
+  <property>
+   <name>hive.compute.query.using.stats</name>
+   <value>true</value>
+  </property>
+
+  <property>
+   <name>hive.stats.fetch.column.stats</name>
+   <value>true</value>
+  </property>
+
+  <property>
+   <name>hive.stats.fetch.partition.stats</name>
+   <value>true</value>
+  </property>
+
+  <!--Hive PPD-->
+  <property>
+   <name>hive.optimize.ppd</name>
+   <value>true</value>
+  </property>
+
+  <property>
+   <name>hive.optimize.ppd.storage</name>
+   <value>true</value>
+  </property>
+
+  <property>
+   <name>hive.stats.autogather</name>
+   <value>true</value>
+  </property>
+
+  <!--Hive Vectorized-->
+  <property>
+   <name>hive.vectorized.execution.enabled</name>
+   <value>true</value>
+  </property>
+
+  <property>
+   <name>hive.vectorized.execution.reduce.enabled</name>
+   <value>true</value>
+  </property>
+
+  <property>
+   <name>hive.vectorized.execution.reduce.groupby.enabled</name>
+   <value>true</value>
+  </property>
+
+  <!--Hive/ Tez parallism-->
+  <property>
+   <name>hive.tez.auto.reducer.parallelism</name>
+   <value>true</value>
+  </property>
+
+</configuration>

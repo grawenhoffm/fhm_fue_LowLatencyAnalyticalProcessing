@@ -1,6 +1,6 @@
 
 select sum (ss_ss_quantity)
- from bigTable
+ from default.bigTable
  where ss_sold_date_d_year = 1998
  and
  (

@@ -1,6 +1,6 @@
 select  ss_item_i_brand_id ss_item_brand_id, ss_item_i_brand brand, ss_item_i_manufact_id, ss_item_i_manufact,
  	sum(ss_ss_ext_sales_price) ext_price
- from bigTable
+ from default.bigTable
    where ss_item_i_manager_id=7
    and ss_sold_date_d_moy=11
    and ss_sold_date_d_year=1999
