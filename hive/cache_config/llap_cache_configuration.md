@@ -30,8 +30,15 @@ hive --service llap --name llaptest --instances 1 --cache 25g --xmx 192g --size 
 
 Setup6
 ```
-hive --service llap --name llaptest --instances 1 --cache 25g --xmx 164g --size 223g --executors 41 --loglevel INFO --args " -XX:+UseG1GC -XX:+ResizeTLAB -XX:+UseNUMA  -XX:-ResizePLAB"
+hive --service llap --name llaptest --instances 1 --cache 15g --xmx 192g --size 213g --executors 48 --loglevel INFO --args " -XX:+UseG1GC -XX:+ResizeTLAB -XX:+UseNUMA  -XX:-ResizePLAB"
 ```
+
+Setup7
+```
+hive --service llap --name llaptest --instances 1 --cache 25g --xmx 164g --size 195g --executors 41 --loglevel INFO --args " -XX:+UseG1GC -XX:+ResizeTLAB -XX:+UseNUMA  -XX:-ResizePLAB"
+```
+
+
 
 HW_opt
 ```
