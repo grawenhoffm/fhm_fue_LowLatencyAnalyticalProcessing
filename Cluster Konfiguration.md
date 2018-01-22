@@ -9,3 +9,4 @@
 | Chassis |  | UCSB-5108-AC2 |
 | I/O-Module |  | 2* UCS-IOM-2208XP |
 | Switch |  | 2* UCS-FI-6248UP |
+| Betriebssystem |  | Ubuntu 16.04.3 LTS |
