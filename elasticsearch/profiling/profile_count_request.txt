@@ -1,0 +1,39 @@
+GET /tpcdsstore50-75/_search
+{
+  "profile": true,
+  "query" : {
+    "bool": {
+      "must": [
+        {
+          "term" : { 
+            "ss_store_s_store_name.keyword" : "ese"
+          }
+        },
+        {
+          "term" : { 
+            "ss_hdemo_hd_dep_count" : 5
+          }
+        },
+        {
+          "term" : { 
+            "ss_sold_time_t_hour" : 8
+          }
+        },
+        {
+          "range" : {
+            "ss_sold_time_t_minute" : {
+                "gte" : 30
+            }
+          }
+        }
+      ]
+    }
+  },
+  "aggs" : {
+    "cnt" : { 
+      "value_count" : { 
+          "field" : "_id" 
+      } 
+    }
+  }
+}
