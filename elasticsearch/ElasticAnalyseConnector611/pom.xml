@@ -1,0 +1,124 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>fh.funde</groupId>
+  <artifactId>ElasticAnalyseConnector611</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>ElasticAnalyseConnector611</name>
+  <description>ElasticAnalyseConnector611</description>
+  
+  <dependencies>
+	<dependency>
+		  <groupId>ch.qos.logback</groupId>
+		  <artifactId>logback-classic</artifactId>
+		  <version>1.2.3</version>
+	</dependency>
+
+    <dependency>
+	    <groupId>org.elasticsearch.client</groupId>
+	    <artifactId>elasticsearch-rest-high-level-client</artifactId>
+	    <version>6.1.1</version>
+	    <!-- <version>6.0.1</version>-->
+  	</dependency>
+  	
+  	<!-- https://mvnrepository.com/artifact/org.json/json -->
+	<dependency>
+	    <groupId>org.json</groupId>
+	    <artifactId>json</artifactId>
+	    <version>20170516</version>
+	</dependency>
+
+
+  </dependencies>
+  
+  
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  
+  <build>
+    <finalName>ElasticAnalyseConnector611</finalName>
+  	<plugins>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<configuration>
+				<compilerVersion>1.8</compilerVersion>
+				<source>1.8</source>
+				<target>1.8</target>
+			</configuration>
+		</plugin>
+
+          <!-- Maven build Plugin zum Erzeugen einer Jar Datei mit allen Dependencies
+                (fat / uber jar)-->
+         <plugin>
+             <groupId>org.apache.maven.plugins</groupId>
+             <artifactId>maven-shade-plugin</artifactId>
+             <version>2.3</version>
+             <configuration>
+			    <filters>
+			        <filter>
+			            <artifact>*:*</artifact>
+			            <excludes>
+			                <exclude>META-INF/*.SF</exclude>
+			                <exclude>META-INF/*.DSA</exclude>
+			                <exclude>META-INF/*.RSA</exclude>
+			            </excludes>
+			        </filter>
+			    </filters>
+			    <!-- Additional configuration. -->
+			</configuration>
+             <executions>
+                 <execution>
+                     <phase>package</phase>
+                     <goals>
+                         <goal>shade</goal>
+                     </goals>
+                 </execution>
+             </executions>
+         </plugin>
+
+         <plugin>
+             <groupId>org.apache.maven.plugins</groupId>
+             <artifactId>maven-jar-plugin</artifactId>
+             <configuration>
+                 <archive>
+                     <manifest>
+                         <addClasspath>true</addClasspath>
+                         <mainClass>de.funde.elastic.main.ElasticAnalyseConnector</mainClass>
+                     </manifest>
+                 </archive>
+             </configuration>
+         </plugin>
+		</plugins>
+	  <!-- <plugins>
+	  	 <plugin>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.1</version>
+            <configuration>
+                <source>1.8</source>
+                <target>1.8</target>
+            </configuration>
+          </plugin>
+		  <plugin>
+		    <groupId>org.apache.maven.plugins</groupId>
+		    <artifactId>maven-shade-plugin</artifactId>
+		    <version>2.4.1</version>
+		    <executions>
+		        <execution>
+		            <phase>package</phase>
+		            <goals><goal>shade</goal></goals>
+		            <configuration>
+		                <transformers>
+		                    <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+		                    
+		                    <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+							    <mainClass>de.funde.elastic.main.ElasticAnalyseConnector</mainClass>
+							</transformer>
+		                </transformers>
+		            </configuration>
+		        </execution>
+		    </executions>
+		  </plugin>
+	  </plugins>-->
+  </build>
+</project>
