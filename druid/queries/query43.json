@@ -8,7 +8,7 @@
   SUM(CASE WHEN (\"ss_sold_date_d_day_name\"='Thursday') THEN \"ss_ss_sales_price\" ELSE null END) AS thu_sales,
   SUM(CASE WHEN (\"ss_sold_date_d_day_name\"='Friday') THEN \"ss_ss_sales_price\" ELSE null END) AS fri_sales,
   SUM(CASE WHEN (\"ss_sold_date_d_day_name\"='Saturday') THEN \"ss_ss_sales_price\" ELSE null END) AS sat_sales
- FROM store_sales
+ FROM store_sales_month
  WHERE \"ss_store_s_gmt_offset\" = -6 AND
   \"ss_sold_date_d_year\" = 1998
  GROUP BY \"ss_store_s_store_name\", \"ss_store_s_store_id\"

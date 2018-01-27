@@ -3,7 +3,7 @@ SELECT AVG(\"ss_ss_quantity\")
        ,AVG(\"ss_ss_ext_sales_price\")
        ,AVG(\"ss_ss_ext_wholesale_cost\")
        ,SUM(\"ss_ss_ext_wholesale_cost\")
- FROM store_sales
+ FROM store_sales_month
  WHERE \"ss_sold_date_d_year\" = 2001
  AND((\"ss_cdemo_cd_marital_status\" = 'M'
   AND \"ss_cdemo_cd_education_status\" = '4 yr Degree'

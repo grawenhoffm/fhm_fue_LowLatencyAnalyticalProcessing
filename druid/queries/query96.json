@@ -1,10 +1,7 @@
 {"query":"
 SELECT COUNT(*) AS cs
- FROM store_sales
- WHERE \"ss_ss_sold_time_sk\" = \"ss_sold_time_t_time_sk\"
-  AND \"ss_ss_hdemo_sk\" = \"ss_hdemo_hd_demo_sk\"
-  AND \"ss_ss_store_sk\" = \"ss_store_s_store_sk\"
-  AND \"ss_sold_time_t_hour\" = 8
+ FROM store_sales_month
+ WHERE \"ss_sold_time_t_hour\" = 8
   AND \"ss_sold_time_t_minute\" >= 30
   AND \"ss_hdemo_hd_dep_count\" = 5
   AND \"ss_store_s_store_name\" = 'ese'

@@ -3,7 +3,7 @@ select \"ss_sold_date_d_year\",
   \"ss_item_i_category_id\",
   \"ss_item_i_category\",
   SUM(\"ss_ss_ext_sales_price\") AS sp
- FROM store_sales
+ FROM store_sales_month
  WHERE \"ss_item_i_manager_id\" = 1
  AND \"ss_sold_date_d_moy\"=12
  AND \"ss_sold_date_d_year\"=1998

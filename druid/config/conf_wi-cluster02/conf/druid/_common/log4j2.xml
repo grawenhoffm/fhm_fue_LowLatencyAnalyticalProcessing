@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Configuration status="WARN">
+  <Appenders>
+    <Console name="Console" target="SYSTEM_OUT">
+      <PatternLayout pattern="%d{ISO8601} %p [%t] %c - %m%n"/>
+    </Console>
+  </Appenders>
+  <Loggers>
+    <AsyncLogger name="io.druid.curator.inventory.CuratorInventoryManager" level="debug" additivity="false">
+      <AppenderRef ref="Console"/>
+    </AsyncLogger>
+    <AsyncLogger name="io.druid.client.BatchServerInventoryView" level="debug" additivity="false">
+      <AppenderRef ref="Console"/>
+    </AsyncLogger>
+    <!-- Make extra sure nobody adds logs in a bad way that can hurt performance -->
+    <AsyncLogger name="io.druid.client.ServerInventoryView" level="debug" additivity="false">
+      <AppenderRef ref="Console"/>
+    </AsyncLogger>
+    <AsyncLogger name ="com.metamx.http.client.pool.ChannelResourceFactory" level="info" additivity="false">
+      <AppenderRef ref="Console"/>
+    </AsyncLogger>
+    <Root level="info">
+      <AppenderRef ref="Console"/>
+    </Root>
+  </Loggers>
+</Configuration>

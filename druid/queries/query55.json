@@ -1,7 +1,7 @@
 {"query":"SELECT \"ss_item_i_brand_id\" AS brand_id,
   \"ss_item_i_brand\" AS brand,
   SUM(\"ss_ss_ext_sales_price\") AS ext_price
-  FROM \"store_sales\"
+  FROM store_sales_month
   WHERE \"ss_item_i_manager_id\"=36
   AND \"ss_sold_date_d_moy\"=12
   AND \"ss_sold_date_d_year\"=2001
