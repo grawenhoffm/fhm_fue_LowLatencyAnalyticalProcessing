@@ -5,7 +5,7 @@
   AVG(\"ss_ss_list_price\") AS agg2,
   AVG(\"ss_ss_coupon_amt\") AS agg3,
   AVG(\"ss_ss_sales_price_sum\") AS agg4
- FROM store_sales
+ FROM store_sales_month
  WHERE \"ss_cdemo_cd_gender\" = 'M' AND
       \"ss_cdemo_cd_marital_status\" = 'U' AND
       \"ss_cdemo_cd_education_status\" = '2 yr Degree' AND

@@ -6,10 +6,8 @@ SELECT \"ss_item_i_item_desc\",
    \"ss_item_i_item_id\",
    SUM(\"ss_ss_ext_sales_price\") AS itemrevenue,
    SUM(\"ss_ss_ext_sales_price\") * 100 AS revenueratio
- FROM store_sales
- WHERE \"ss_ss_item_sk\" = \"ss_item_i_item_sk\"
-  AND \"ss_item_i_category\" in ('Jewelry', 'Sports', 'Books')
-  AND \"ss_ss_sold_date_sk\" = \"ss_sold_date_d_date_sk\"
+ FROM store_sales_month
+ WHERE \"ss_item_i_category\" in ('Jewelry', 'Sports', 'Books')
   AND \"ss_sold_date_d_date\" BETWEEN CAST('2001-01-12' AS DATE)
   AND (CAST('2001-01-12' AS DATE) + INTERVAL '30' DAY)
  GROUP BY \"ss_item_i_item_id\",

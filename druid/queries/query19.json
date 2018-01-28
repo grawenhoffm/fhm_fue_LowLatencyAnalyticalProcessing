@@ -3,12 +3,10 @@
   \"ss_item_i_manufact_id\",
   \"ss_item_i_manufact\",
   SUM(\"ss_ss_ext_sales_price\") AS ext_price
-  FROM store_sales
+  FROM store_sales_month
   WHERE \"ss_item_i_manager_id\"=7
   AND \"ss_sold_date_d_moy\"=11
   AND \"ss_sold_date_d_year\"=1999
-  AND \"ss_ss_customer_sk\" = \"ss_customer_c_customer_sk\"
-  AND \"ss_customer_c_current_addr_sk\" = \"ss_c_current_addr_ca_address_sk\"
   AND SUBSTRING(\"ss_addr_ca_zip\",1,5) <> SUBSTRING(\"ss_store_s_zip\",1,5)
   GROUP BY \"ss_item_i_brand\",
   \"ss_item_i_brand_id\" ,

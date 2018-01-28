@@ -1,11 +1,10 @@
 {"query":"
- EXPLAIN PLAN FOR
  SELECT \"ss_item_i_item_id\",
         AVG(\"ss_ss_quantity\") AS agg1,
         AVG(\"ss_ss_list_price\") AS agg2,
         AVG(\"ss_ss_coupon_amt\") AS agg3,
         AVG(\"ss_ss_sales_price_sum\") AS agg4
- FROM \"store_sales\"
+ FROM store_sales_month
  WHERE \"ss_cdemo_cd_gender\" = 'F' AND
        \"ss_cdemo_cd_marital_status\" = 'W' AND
        \"ss_cdemo_cd_education_status\" = 'Primary' AND

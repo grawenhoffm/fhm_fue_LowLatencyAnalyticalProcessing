@@ -1,0 +1,157 @@
+#author: Sebastian
+version: "2.2"
+services:
+  elasticsearch611_1:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.1.1
+    container_name: elasticsearch611_1
+    environment:
+      - cluster.name=fuetpcds611
+      - node.name=dcon21
+      - bootstrap.memory_lock=true
+      - discovery.zen.ping.unicast.hosts=wi-cluster01.fh-muenster.de:9305,wi-cluster06.fh-muenster.de:9306,wi-cluster01.fh-muenster.de:9307,wi-cluster01.fh-muenster.de:9308,
+        wi-cluster02.fh-muenster.de:9305,wi-cluster02.fh-muenster.de:9306,wi-cluster02.fh-muenster.de:9307,wi-cluster02.fh-muenster.de:9308,
+        wi-cluster03.fh-muenster.de:9305,wi-cluster03.fh-muenster.de:9306,wi-cluster03.fh-muenster.de:9307,wi-cluster03.fh-muenster.de:9308,
+        wi-cluster04.fh-muenster.de:9305,wi-cluster04.fh-muenster.de:9306,wi-cluster04.fh-muenster.de:9307,wi-cluster04.fh-muenster.de:9308
+      - discovery.zen.minimum_master_nodes=9
+      - "ES_JAVA_OPTS=-Xms29g -Xmx29g"
+      - network.publish_host=10.42.13.204
+      - transport.tcp.port=9305
+#      - http.port=9201
+      - xpack.security.enabled=false
+      - xpack.ml.enabled=false
+      - xpack.watcher.enabled=false
+      - reindex.remote.whitelist=wi-cluster01.fh-muenster.de:9201
+      - path.repo=/usr/share/elasticsearch/snaps
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - esdata1:/usr/share/elasticsearch/data
+      - /mnt/es_snap/:/usr/share/elasticsearch/snaps
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    ports:
+      - 9205:9200
+      - 9305:9305
+    networks:
+      - esnet
+
+  elasticsearch611_2:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.1.1
+    container_name: elasticsearch611_2
+    environment:
+      - cluster.name=fuetpcds611
+      - node.name=dcon22
+      - bootstrap.memory_lock=true
+      - discovery.zen.ping.unicast.hosts=wi-cluster01.fh-muenster.de:9305,wi-cluster01.fh-muenster.de:9306,wi-cluster01.fh-muenster.de:9307,wi-cluster01.fh-muenster.de:9308,
+        wi-cluster02.fh-muenster.de:9305,wi-cluster02.fh-muenster.de:9306,wi-cluster02.fh-muenster.de:9307,wi-cluster02.fh-muenster.de:9308,
+        wi-cluster03.fh-muenster.de:9305,wi-cluster03.fh-muenster.de:9306,wi-cluster03.fh-muenster.de:9307,wi-cluster03.fh-muenster.de:9308,
+        wi-cluster04.fh-muenster.de:9305,wi-cluster04.fh-muenster.de:9306,wi-cluster04.fh-muenster.de:9307,wi-cluster04.fh-muenster.de:9308
+      - discovery.zen.minimum_master_nodes=9
+      - "ES_JAVA_OPTS=-Xms29g -Xmx29g"
+      - network.publish_host=10.42.13.204
+      - transport.tcp.port=9306
+      - xpack.security.enabled=false
+      - xpack.ml.enabled=false
+      - xpack.watcher.enabled=false
+      - reindex.remote.whitelist=wi-cluster01.fh-muenster.de:9201
+      - path.repo=/usr/share/elasticsearch/snaps
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - esdata2:/usr/share/elasticsearch/data
+      - /mnt/es_snap/:/usr/share/elasticsearch/snaps
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    ports:
+      - 9206:9200
+      - 9306:9306
+    networks:
+      - esnet
+
+  elasticsearch611_3:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.1.1
+    container_name: elasticsearch611_3
+    environment:
+      - cluster.name=fuetpcds611
+      - node.name=dcon23
+      - bootstrap.memory_lock=true
+      - discovery.zen.ping.unicast.hosts=wi-cluster01.fh-muenster.de:9305,wi-cluster01.fh-muenster.de:9306,wi-cluster01.fh-muenster.de:9307,wi-cluster01.fh-muenster.de:9308,
+        wi-cluster02.fh-muenster.de:9305,wi-cluster02.fh-muenster.de:9306,wi-cluster02.fh-muenster.de:9307,wi-cluster02.fh-muenster.de:9308,
+        wi-cluster03.fh-muenster.de:9305,wi-cluster03.fh-muenster.de:9306,wi-cluster03.fh-muenster.de:9307,wi-cluster03.fh-muenster.de:9308,
+        wi-cluster04.fh-muenster.de:9305,wi-cluster04.fh-muenster.de:9306,wi-cluster04.fh-muenster.de:9307,wi-cluster04.fh-muenster.de:9308
+      - discovery.zen.minimum_master_nodes=9
+      - "ES_JAVA_OPTS=-Xms29g -Xmx29g"
+      - network.publish_host=10.42.13.204
+      - transport.tcp.port=9307
+      - xpack.security.enabled=false
+      - xpack.ml.enabled=false
+      - xpack.watcher.enabled=false
+      - reindex.remote.whitelist=wi-cluster01.fh-muenster.de:9201
+      - path.repo=/usr/share/elasticsearch/snaps
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - esdata3:/usr/share/elasticsearch/data
+      - /mnt/es_snap/:/usr/share/elasticsearch/snaps
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    ports:
+      - 9207:9200
+      - 9307:9307
+    networks:
+      - esnet
+
+  elasticsearch611_4:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.1.1
+    container_name: elasticsearch611_4
+    environment:
+      - cluster.name=fuetpcds611
+      - node.name=dcon24
+      - bootstrap.memory_lock=true
+      - discovery.zen.ping.unicast.hosts=wi-cluster01.fh-muenster.de:9305,wi-cluster01.fh-muenster.de:9306,wi-cluster01.fh-muenster.de:9307,wi-cluster01.fh-muenster.de:9308,
+        wi-cluster02.fh-muenster.de:9305,wi-cluster02.fh-muenster.de:9306,wi-cluster02.fh-muenster.de:9307,wi-cluster02.fh-muenster.de:9308,
+        wi-cluster03.fh-muenster.de:9305,wi-cluster03.fh-muenster.de:9306,wi-cluster03.fh-muenster.de:9307,wi-cluster03.fh-muenster.de:9308,
+        wi-cluster04.fh-muenster.de:9305,wi-cluster04.fh-muenster.de:9306,wi-cluster04.fh-muenster.de:9307,wi-cluster04.fh-muenster.de:9308
+      - discovery.zen.minimum_master_nodes=9
+      - "ES_JAVA_OPTS=-Xms29g -Xmx29g"
+      - network.publish_host=10.42.13.204
+      - transport.tcp.port=9308
+      - xpack.security.enabled=false
+      - xpack.ml.enabled=false
+      - xpack.watcher.enabled=false
+      - reindex.remote.whitelist=wi-cluster01.fh-muenster.de:9201
+      - path.repo=/usr/share/elasticsearch/snaps
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - esdata4:/usr/share/elasticsearch/data
+      - /mnt/es_snap/:/usr/share/elasticsearch/snaps
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    ports:
+      - 9208:9200
+      - 9308:9308
+    networks:
+      - esnet
+
+volumes:
+  esdata1:
+    driver: local
+  esdata2:
+    driver: local
+  esdata3:
+    driver: local
+  esdata4:
+    driver: local
+
+networks:
+  esnet:
+

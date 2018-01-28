@@ -1,10 +1,10 @@
 {"query":"
   SELECT \"ss_addr_ca_state\" AS \"state\",
   COUNT(*) AS cnt
-  FROM store_sales AS s
+  FROM store_sales_month AS s
   WHERE \"ss_sold_date_d_month_seq\" IN
         (SELECT DISTINCT (\"ss_sold_date_d_month_seq\")
-        FROM store_sales
+        FROM store_sales_month
         WHERE \"ss_sold_date_d_year\" = 2000
         AND \"ss_sold_date_d_moy\" = 2 )
   GROUP BY \"ss_addr_ca_state\"

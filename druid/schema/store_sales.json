@@ -1,0 +1,172 @@
+{
+  "type" : "index_hadoop",
+  "spec" : {
+    "ioConfig" : {
+      "type" : "hadoop",
+      "inputSpec" : {
+        "type" : "static",
+        "paths" : "file:///data/hadoop/druid/store_sales.csv"
+      }
+    },
+    "dataSchema" : {
+      "dataSource" : "store_sales",
+      "granularitySpec" : {
+        "type": "uniform",
+        "segmentGranularity": "week",
+        "queryGranularity": "none",
+        "intervals": ["1998-01-01/2003-02-02"]
+      },
+      "parser" : {
+        "type" : "hadoopyString",
+        "parseSpec" : {
+          "format" : "csv",
+          "columns" : [ "timestamp", "ss_ss_sold_date_sk","ss_ss_sold_time_sk","ss_ss_item_sk","ss_ss_customer_sk","ss_ss_cdemo_sk","ss_ss_hdemo_sk","ss_ss_addr_sk","ss_ss_store_sk","ss_ss_promo_sk","ss_ss_quantity","ss_ss_list_price","ss_ss_sales_price","ss_ss_ext_sales_price","ss_ss_ext_wholesale_cost","ss_ss_coupon_amt","ss_ss_net_profit","ss_sold_date_d_date_sk","ss_sold_date_d_date","ss_sold_date_d_month_seq","ss_sold_date_d_year","ss_sold_date_d_moy","ss_sold_date_d_day_name","ss_sold_time_t_time_sk","ss_sold_time_t_time","ss_sold_time_t_hour","ss_sold_time_t_minute","ss_sold_time_t_second","ss_item_i_item_sk","ss_item_i_item_id","ss_item_i_item_desc","ss_item_i_current_price","ss_item_i_brand_id","ss_item_i_brand","ss_item_i_class","ss_item_i_category_id","ss_item_i_category","ss_item_i_manufact_id","ss_item_i_manufact","ss_item_i_size","ss_item_i_manager_id","ss_customer_c_customer_sk","ss_customer_c_current_addr_sk","ss_cdemo_cd_demo_sk","ss_cdemo_cd_gender","ss_cdemo_cd_marital_status","ss_cdemo_cd_education_status","ss_hdemo_hd_demo_sk","ss_hdemo_hd_dep_count","ss_addr_ca_address_sk","ss_addr_ca_state","ss_addr_ca_zip","ss_addr_ca_country","ss_promo_p_promo_sk","ss_promo_p_channel_email","ss_promo_p_channel_event","ss_store_s_store_sk","ss_store_s_store_id","ss_store_s_store_name","ss_store_s_county","ss_store_s_state","ss_store_s_zip","ss_store_s_gmt_offset","ss_c_current_addr_ca_address_sk","ss_c_current_addr_ca_state","ss_c_current_addr_ca_zip","ss_c_current_addr_ca_country"],
+          "dimensionsSpec" : {
+            "dimensions": [
+              {"type": "string", "name": "ss_ss_sold_date_sk"},
+              {"type": "string", "name": "ss_ss_sold_time_sk"},
+              {"type": "string", "name": "ss_ss_item_sk"},
+              {"type": "string", "name": "ss_ss_customer_sk"},
+              {"type": "string", "name": "ss_ss_cdemo_sk"},
+              {"type": "string", "name": "ss_ss_hdemo_sk"},
+              {"type": "string", "name": "ss_ss_addr_sk"},
+              {"type": "string", "name": "ss_ss_store_sk"},
+              {"type": "string", "name": "ss_ss_promo_sk"},
+              {"type": "float", "name": "ss_ss_sales_price"},
+              {"type": "float", "name": "ss_ss_net_profit"},
+              {"type": "string", "name": "ss_sold_date_d_date_sk"},
+              {"type": "date", "name": "ss_sold_date_d_date"},
+              {"type": "long", "name": "ss_sold_date_d_month_seq"},
+              {"type": "long", "name": "ss_sold_date_d_year"},
+              {"type": "long", "name": "ss_sold_date_d_moy"},
+              {"type": "string", "name": "ss_sold_date_d_day_name"},
+              {"type": "string", "name": "ss_sold_time_t_time_sk"},
+              {"type": "long", "name": "ss_sold_time_t_time"},
+              {"type": "long", "name": "ss_sold_time_t_hour"},
+              {"type": "long", "name": "ss_sold_time_t_minute"},
+              {"type": "long", "name": "ss_sold_time_t_second"},
+              {"type": "string", "name": "ss_item_i_item_sk"},
+              {"type": "string", "name": "ss_item_i_item_id"},
+              {"type": "string", "name": "ss_item_i_item_desc"},
+              {"type": "long", "name": "ss_item_i_brand_id"},
+              {"type": "string", "name": "ss_item_i_brand"},
+              {"type": "string", "name": "ss_item_i_class"},
+              {"type": "long", "name": "ss_item_i_category_id"},
+              {"type": "string", "name": "ss_item_i_category"},
+              {"type": "long", "name": "ss_item_i_manufact_id"},
+              {"type": "string", "name": "ss_item_i_manufact"},
+              {"type": "string", "name": "ss_item_i_size"},
+              {"type": "long", "name": "ss_item_i_manager_id"},
+              {"type": "string", "name": "ss_customer_c_customer_sk"},
+              {"type": "string", "name": "ss_customer_c_current_addr_sk"},
+              {"type": "string", "name": "ss_cdemo_cd_demo_sk"},
+              {"type": "string", "name": "ss_cdemo_cd_gender"},
+              {"type": "string", "name": "ss_cdemo_cd_marital_status"},
+              {"type": "string", "name": "ss_cdemo_cd_education_status"},
+              {"type": "string", "name": "ss_hdemo_hd_demo_sk"},
+              {"type": "long", "name": "ss_hdemo_hd_dep_count"},
+              {"type": "string", "name": "ss_addr_ca_address_sk"},
+              {"type": "string", "name": "ss_addr_ca_state"},
+              {"type": "string", "name": "ss_addr_ca_zip"},
+              {"type": "string", "name": "ss_addr_ca_country"},
+              {"type": "string", "name": "ss_promo_p_promo_sk"},
+              {"type": "string", "name": "ss_promo_p_channel_email"},
+              {"type": "string", "name": "ss_promo_p_channel_event"},
+              {"type": "string", "name": "ss_store_s_store_sk"},
+              {"type": "string", "name": "ss_store_s_store_id"},
+              {"type": "string", "name": "ss_store_s_store_name"},
+              {"type": "string", "name": "ss_store_s_county"},
+              {"type": "string", "name": "ss_store_s_state"},
+              {"type": "string", "name": "ss_store_s_zip"},
+              {"type": "float", "name": "ss_store_s_gmt_offset"},
+              {"type": "string", "name": "ss_c_current_addr_ca_address_sk"},
+              {"type": "string", "name": "ss_c_current_addr_ca_state"},
+              {"type": "string", "name": "ss_c_current_addr_ca_zip"},
+              {"type": "string", "name": "ss_c_current_addr_ca_country"}
+           ]
+          },
+          "timestampSpec" : {
+            "format" : "auto",
+            "column" : "timestamp"
+          }
+        }
+      },
+      "metricsSpec" : [
+        {
+          "name" : "count",
+          "type" : "count"
+        },
+        {
+          "name" : "added",
+          "type" : "longSum",
+          "fieldName" : "added"
+        },
+        {
+          "name" : "deleted",
+          "type" : "longSum",
+          "fieldName" : "deleted"
+        },
+        {
+          "name" : "delta",
+          "type" : "longSum",
+          "fieldName" : "delta"
+        },
+        {
+          "name" : "user_unique",
+          "type" : "hyperUnique",
+          "fieldName" : "user"
+        },
+        {
+          "name": "ss_ss_ext_sales_price",
+          "type" : "floatSum",
+          "fieldName": "ss_ss_ext_sales_price"
+        },
+        {
+          "name": "ss_ss_ext_wholesale_cost",
+          "type" : "floatSum",
+          "fieldName": "ss_ss_ext_wholesale_cost"
+        },
+        {
+          "name": "ss_ss_quantity",
+          "type" : "longSum",
+          "fieldName": "ss_ss_quantity"
+        },
+        {
+          "name": "ss_ss_net_profit_sum",
+          "type" : "floatSum",
+          "fieldName": "ss_ss_net_profit"
+        },
+        {
+          "name": "ss_item_i_current_price",
+          "type" : "floatSum",
+          "fieldName": "ss_item_i_current_price"
+        },
+        {
+          "name": "ss_ss_list_price",
+          "type" : "floatSum",
+          "fieldName": "ss_ss_list_price"
+        },
+        {
+          "name": "ss_ss_coupon_amt",
+          "type" : "floatSum",
+          "fieldName": "ss_ss_coupon_amt"
+        },
+        {
+          "name": "ss_ss_sales_price_sum",
+          "type" : "floatSum",
+          "fieldName": "ss_ss_sales_price"
+        }
+
+      ]
+    },
+    "tuningConfig" : {
+      "type" : "hadoop",
+      "partitionsSpec" : {
+        "type" : "hashed",
+        "targetPartitionSize" : 5000000
+      },
+      "jobProperties" : {}
+    }
+
+  }
+}

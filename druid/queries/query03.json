@@ -3,10 +3,8 @@
          ,\"ss_item_i_brand_id\" AS brand_id
          ,\"ss_item_i_brand\" AS brand
          ,SUM(\"ss_ss_ext_sales_price\") AS sum_agg
-   FROM store_sales
-   where \"ss_sold_date_d_date_sk\" = \"ss_ss_sold_date_sk\"
-     AND \"ss_ss_item_sk\" = \"ss_item_i_item_sk\"
-     AND \"ss_item_i_manufact_id\" = 436
+   FROM store_sales_month
+   where \"ss_item_i_manufact_id\" = 436
      AND \"ss_sold_date_d_moy\" = 12
    GROUP BY \"ss_sold_date_d_year\"
         ,\"ss_item_i_brand\"
