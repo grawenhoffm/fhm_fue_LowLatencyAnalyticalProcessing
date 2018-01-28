@@ -1,6 +1,6 @@
-Initial (Hortonworks recommendation)
+Initial
 ```
-hive --service llap --name llaptest --instances 2 --cache 98g --xmx 96g --size 200g --executors 24 --loglevel INFO --args " -XX:+UseG1GC -XX:+ResizeTLAB -XX:+UseNUMA  -XX:-ResizePLAB"
+hive --service llap --name llaptest --instances 2 --size 200g
 ```
 
 Setup1
